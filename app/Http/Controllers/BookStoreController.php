@@ -47,7 +47,7 @@ class BookStoreController extends Controller
      */
     public function store(Request $request)
     {
-        return ['store'];
+        return BookStore::create($request->all());
     }
 
     /**

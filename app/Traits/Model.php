@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 trait Model
 {
 
+  public static function bootModel()
+  {
+    static::saving(function($model) {
+      $validate = $model->validate();
+
+      if ($validate->fails()) {
+        throw new \App\Exceptions\ApiException(500, 'Validation errors', $validate->errors());
+      }
+    });
+  }
+
   public function validationRules()
   {
     return [
@@ -19,10 +30,11 @@ trait Model
     return [];
   }
 
-  public function validate($data = [])
+  public function validate()
   {
     $rules = $this->validationRules();
     $messages = $this->validationMessages();
+    $data = $this->toArray();
     return \Validator::make($data, $rules, $messages);
   }
 
@@ -35,6 +47,7 @@ trait Model
 
   public function scopeSearch($query, $params = [])
   {
-    return $this->onSearch($query, new Request($params));
+    $params = is_array($params)? new Request($params): $params;
+    return $this->onSearch($query, $params);
   }
 }
