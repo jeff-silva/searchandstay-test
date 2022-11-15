@@ -21,6 +21,11 @@ class BookStoreController extends Controller
      *      summary="",
      *      operationId="book-store.index",
      *      tags={"book-store"},
+     *      @OA\Parameter(in="query", name="page", example="1"),
+     *      @OA\Parameter(in="query", name="per_page", example="10"),
+     *      @OA\Parameter(in="query", name="term", example=""),
+     *      @OA\Parameter(in="query", name="value_min", example=""),
+     *      @OA\Parameter(in="query", name="value_max", example=""),
      *      @OA\Response(response=200, description="")
      * )
      */

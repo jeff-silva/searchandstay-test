@@ -95,6 +95,33 @@
                 "summary": "",
                 "description": "Display a listing of books.",
                 "operationId": "book-store.index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "example": "1"
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "example": "10"
+                    },
+                    {
+                        "name": "term",
+                        "in": "query",
+                        "example": ""
+                    },
+                    {
+                        "name": "value_min",
+                        "in": "query",
+                        "example": ""
+                    },
+                    {
+                        "name": "value_max",
+                        "in": "query",
+                        "example": ""
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""

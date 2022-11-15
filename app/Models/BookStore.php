@@ -34,8 +34,19 @@ class BookStore extends Model
 
     public function onSearch($query, $params)
     {
-        if ($params->name) {
-            $query->where('name', 'like', "%{$params->name}%");
+        if ($params->term) {
+            $query->where(function($query) use($params) {
+                $query->where('name', 'like', "%{$params->term}%");
+                $query->orWhere('isbn', 'like', "%{$params->term}%");
+            });
+        }
+
+        if ($params->value_min) {
+            $query->where('value', '>=', $params->value_min);
+        }
+        
+        if ($params->value_max) {
+            $query->where('value', '<=', $params->value_max);
         }
 
         return $query;
