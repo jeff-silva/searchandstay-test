@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use Illuminate\Http\Request;
+
 trait Model
 {
 
@@ -24,8 +26,15 @@ trait Model
     return \Validator::make($data, $rules, $messages);
   }
 
-  public function scopeSearch($query, $params = [])
+
+  // Search methods
+  public function onSearch($query, $params)
   {
     return $query;
+  }
+
+  public function scopeSearch($query, $params = [])
+  {
+    return $this->onSearch($query, new Request($params));
   }
 }

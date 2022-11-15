@@ -24,9 +24,11 @@ class BookStoreController extends Controller
      *      @OA\Response(response=200, description="")
      * )
      */
-    public function index()
+    public function index(Request $request)
     {
-        return (new BookStore)->paginate();
+        return BookStore::query()
+            ->search($request->all())
+            ->simplePaginate(request('per_page', 10));
     }
 
     /**
