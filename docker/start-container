@@ -13,6 +13,7 @@ chmod -R ugo+rw /.composer
 if [ ! -f /var/www/html/.env ]; then
 	cp .env.example .env
     php artisan key:generate
+    php artisan jwt:secret
 fi
 
 composer install
