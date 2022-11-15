@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 /**
- * @OA\Info(title="API", version="0.1")
+ * @OA\Info(title="Search and Stay Test", version="0.1")
  * @OA\PathItem(path="/api")
  */
 
