@@ -69,8 +69,10 @@ class BookStoreController extends Controller
      *      @OA\Response(response=200, description="")
      * )
      */
-    public function show(BookStore $model)
+    public function show($id)
     {
+        $model = BookStore::find($id);
+        if (! $model) $this->error(404, 'Book does not exists');
         return $model;
     }
 
