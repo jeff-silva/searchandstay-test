@@ -84,9 +84,12 @@ class BookStoreController extends Controller
      *      @OA\Response(response=200, description="")
      * )
      */
-    public function update(Request $request, BookStore $bookStore)
+    public function update(Request $request, $id)
     {
-        return ['update', $bookStore];
+        $model = BookStore::firstOrNew(['id' => $id]);
+        $model->fill($request->all());
+        $model->save();
+        return $model;
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rule;
 
 class BookStore extends Model
 {
@@ -16,7 +17,7 @@ class BookStore extends Model
     {
         return [
             'name' => ['required'],
-            'isbn' => ['required', 'unique:book_store,isbn'],
+            'isbn' => ['required', Rule::unique('book_store', 'isbn')->ignore($this->id)],
             'value' => ['required'],
         ];
     }
