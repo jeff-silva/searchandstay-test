@@ -30,10 +30,9 @@ class AppInstall extends Command
         $this->call('cache:clear');
         $this->call('config:clear');
         $this->call('route:clear');
-        // $this->call('migrate');
-        // $this->call('db:seed');
         $this->call('migrate', ['--force' => true]);
         $this->call('db:seed', ['--force' => true]);
+        $this->call('l5-swagger:generate');
         return Command::SUCCESS;
     }
 }

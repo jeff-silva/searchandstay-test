@@ -21,8 +21,28 @@ class AuthController extends Controller
 
     /**
      * Get a JWT via given credentials.
-     *
      * @return \Illuminate\Http\JsonResponse
+     * 
+     * @OA\Post(
+     *      path="/api/auth/login",
+     *      summary="",
+     *      operationId="auth.login",
+     *      tags={"auth"},
+     *      @OA\RequestBody(
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(
+     *                  @OA\Property(property="email", type="string"),
+     *                  @OA\Property(property="password", type="string"),
+     *                  example={"email": "root@grr.la", "password": "root"}
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description=""
+     *      )
+     * )
      */
     public function login()
     {
@@ -35,20 +55,36 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
+
     /**
      * Get the authenticated User.
-     *
      * @return \Illuminate\Http\JsonResponse
+     * 
+     * @OA\Post(
+     *      path="/api/auth/me",
+     *      summary="",
+     *      operationId="auth.me",
+     *      tags={"auth"},
+     *      @OA\Response(response=200, description="")
+     * )
      */
     public function me()
     {
         return response()->json(auth()->user());
     }
 
+
     /**
      * Log the user out (Invalidate the token).
-     *
      * @return \Illuminate\Http\JsonResponse
+     * 
+     * @OA\Post(
+     *      path="/api/auth/logout",
+     *      summary="",
+     *      operationId="auth.logout",
+     *      tags={"auth"},
+     *      @OA\Response(response=200, description="")
+     * )
      */
     public function logout()
     {
@@ -57,10 +93,18 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
     }
 
+    
     /**
      * Refresh a token.
-     *
      * @return \Illuminate\Http\JsonResponse
+     * 
+     * @OA\Post(
+     *      path="/api/auth/refresh",
+     *      summary="",
+     *      operationId="auth.refresh",
+     *      tags={"auth"},
+     *      @OA\Response(response=200, description="")
+     * )
      */
     public function refresh()
     {
@@ -76,10 +120,10 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
-        return response()->json([
+        return [
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
-        ]);
+            'expires_in' => auth()->factory()->getTTL() * 60,
+        ];
     }
 }
