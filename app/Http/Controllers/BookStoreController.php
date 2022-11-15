@@ -64,9 +64,9 @@ class BookStoreController extends Controller
      *      @OA\Response(response=200, description="")
      * )
      */
-    public function show(BookStore $bookStore)
+    public function show(BookStore $model)
     {
-        return $bookStore;
+        return $model;
     }
 
     /**
@@ -106,8 +106,11 @@ class BookStoreController extends Controller
      *      @OA\Response(response=200, description="")
      * )
      */
-    public function destroy(BookStore $bookStore)
+    public function destroy($id)
     {
-        return ['destroy', $bookStore];
+        $model = BookStore::find($id);
+        if (! $model) $this->error(404, 'Book does not exists');
+        $model->delete();
+        return $model;
     }
 }
