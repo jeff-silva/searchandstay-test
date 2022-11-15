@@ -66,7 +66,7 @@ class BookStoreController extends Controller
      */
     public function show(BookStore $bookStore)
     {
-        return ['show', $bookStore];
+        return $bookStore;
     }
 
     /**
