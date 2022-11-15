@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 trait Model
 {
 
+  public function setNameAttribute($value)
+  {
+    $this->attributes['name'] = ucwords(strtolower($value));
+  }
+  
+  public function setIsbnAttribute($value)
+  {
+    $this->attributes['isbn'] = preg_replace('/[^0-9]/', '', $value);
+  }
+
   public static function bootModel()
   {
     static::saving(function($model) {
