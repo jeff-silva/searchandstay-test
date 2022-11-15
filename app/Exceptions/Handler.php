@@ -43,6 +43,23 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
+        // Force error page inside /api return JSON
+        if (request()->is('api/*')) {
+            $this->renderable(function (\Exception $e, $request) {
+                $resp = [
+                    'status' => 500,
+                    'message' => $e->getMessage(),
+                    'fields' => [],
+                ];
+
+                if (is_array($err = json_decode($e->getMessage(), true))) {
+                    $resp = array_merge($resp, $err);
+                }
+                
+                return response()->json($resp, $resp['status']);
+            });
+        }
+        
         $this->reportable(function (Throwable $e) {
             //
         });

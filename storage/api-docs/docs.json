@@ -86,6 +86,75 @@
                     }
                 }
             }
+        },
+        "/api/book-store": {
+            "get": {
+                "tags": [
+                    "book-store"
+                ],
+                "summary": "",
+                "description": "Display a listing of books.",
+                "operationId": "book-store.index",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "book-store"
+                ],
+                "summary": "",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "book-store.store",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/book-store/{book_store}": {
+            "get": {
+                "tags": [
+                    "book-store"
+                ],
+                "summary": "",
+                "description": "Display the specified resource.",
+                "operationId": "book-store.show",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "book-store"
+                ],
+                "summary": "",
+                "description": "Update the specified resource in storage.",
+                "operationId": "book-store.update",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "book-store"
+                ],
+                "summary": "",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "book-store.destroy",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
         }
     }
 }
