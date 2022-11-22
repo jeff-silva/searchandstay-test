@@ -20,3 +20,4 @@ Route::post('auth/refresh', '\App\Http\Controllers\AuthController@refresh')->nam
 Route::post('auth/me', '\App\Http\Controllers\AuthController@me')->name('auth.me');
 
 Route::apiResource('book-store', '\App\Http\Controllers\BookStoreController');
+Route::apiResource('book-category', '\App\Http\Controllers\BookCategoryController');

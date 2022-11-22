@@ -87,6 +87,102 @@
                 }
             }
         },
+        "/api/book-category": {
+            "get": {
+                "tags": [
+                    "book-category"
+                ],
+                "summary": "",
+                "description": "Display a listing of books.",
+                "operationId": "book-category.index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "example": "1"
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "example": "10"
+                    },
+                    {
+                        "name": "term",
+                        "in": "query",
+                        "example": ""
+                    },
+                    {
+                        "name": "value_min",
+                        "in": "query",
+                        "example": ""
+                    },
+                    {
+                        "name": "value_max",
+                        "in": "query",
+                        "example": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "book-category"
+                ],
+                "summary": "",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "book-category.store",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/book-category/{book_store}": {
+            "get": {
+                "tags": [
+                    "book-category"
+                ],
+                "summary": "",
+                "description": "Display the specified resource.",
+                "operationId": "book-category.show",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "book-category"
+                ],
+                "summary": "",
+                "description": "Update the specified resource in storage.",
+                "operationId": "book-category.update",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "book-category"
+                ],
+                "summary": "",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "book-category.destroy",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/api/book-store": {
             "get": {
                 "tags": [
