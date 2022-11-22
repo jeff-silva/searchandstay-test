@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 use Illuminate\Http\Request;
 
-interface BookStoreInterface
+interface RepositoryInterface
 {
   public function search(Request $request);
   public function store(Request $request);

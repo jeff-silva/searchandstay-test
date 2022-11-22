@@ -3,10 +3,10 @@
 namespace App\Repositories;
 
 use Illuminate\Http\Request;
-use App\Interfaces\BookStoreInterface;
+use App\Interfaces\RepositoryInterface;
 use App\Models\BookStore;
 
-class BookStoreRepository implements BookStoreInterface
+class BookStoreRepository implements RepositoryInterface
 {
   public function search(Request $request)
   {
