@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BookStore;
 use Illuminate\Http\Request;
+use App\Models\BookStore;
+use App\Repositories\BookStoreRepository;
 
 class BookStoreController extends Controller
 {
-    public function __construct()
+    private $repository;
+
+    public function __construct(BookStoreRepository $repository)
     {
         $this->middleware('auth:api');
+        $this->repository = $repository;
     }
 
     /**
@@ -31,9 +35,7 @@ class BookStoreController extends Controller
      */
     public function index(Request $request)
     {
-        return BookStore::query()
-            ->search($request->all())
-            ->simplePaginate(request('per_page', 10));
+        return $this->repository->search($request);
     }
 
     /**
@@ -52,7 +54,7 @@ class BookStoreController extends Controller
      */
     public function store(Request $request)
     {
-        return BookStore::create($request->all());
+        return $this->repository->store($request);
     }
 
     /**
@@ -71,9 +73,7 @@ class BookStoreController extends Controller
      */
     public function show($id)
     {
-        $model = BookStore::find($id);
-        if (! $model) $this->error(404, 'Book does not exists');
-        return $model;
+        return $this->repository->store($id);
     }
 
     /**
@@ -93,10 +93,7 @@ class BookStoreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = BookStore::firstOrNew(['id' => $id]);
-        $model->fill($request->all());
-        $model->save();
-        return $model;
+        return $this->repository->update($request, $id);
     }
 
     /**
@@ -115,9 +112,6 @@ class BookStoreController extends Controller
      */
     public function destroy($id)
     {
-        $model = BookStore::find($id);
-        if (! $model) $this->error(404, 'Book does not exists');
-        $model->delete();
-        return $model;
+        return $this->repository->store($id);
     }
 }
