@@ -13,6 +13,7 @@ class BookStore extends Model
     protected $table = 'book_store';
     protected $fillable = ['id', 'name', 'isbn', 'value'];
 
+
     public function validationRules()
     {
         return [
@@ -21,6 +22,7 @@ class BookStore extends Model
             'value' => ['required'],
         ];
     }
+
 
     public function validationMessages()
     {
@@ -32,6 +34,19 @@ class BookStore extends Model
         ];
     }
 
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucwords(strtolower($value));
+    }
+    
+
+    public function setIsbnAttribute($value)
+    {
+        $this->attributes['isbn'] = preg_replace('/[^0-9]/', '', $value);
+    }
+
+    
     public function onSearch($query, $params)
     {
         if ($params->term) {
