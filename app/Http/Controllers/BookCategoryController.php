@@ -112,6 +112,6 @@ class BookCategoryController extends Controller
      */
     public function destroy($id)
     {
-        return $this->repository->store($id);
+        return $this->repository->destroy($id);
     }
 }
