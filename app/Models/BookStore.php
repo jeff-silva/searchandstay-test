@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\Rule;
+use App\Models\BookCategory;
 
 class BookStore extends Model
 {
@@ -46,7 +47,7 @@ class BookStore extends Model
         $this->attributes['isbn'] = preg_replace('/[^0-9]/', '', $value);
     }
 
-    
+
     public function onSearch($query, $params)
     {
         if ($params->term) {
@@ -65,5 +66,10 @@ class BookStore extends Model
         }
 
         return $query;
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(BookCategory::class, 'book_store_category', 'book_store_id', 'book_category_id');
     }
 }

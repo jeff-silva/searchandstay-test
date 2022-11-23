@@ -24,7 +24,7 @@ class BookCategoryRepository implements RepositoryInterface
   {
     $model = BookCategory::find($id);
     if (! $model) {
-      throw new \App\Exceptions\ApiException(404, 'Book not found');
+      throw new \App\Exceptions\Error(404, 'Book not found');
     }
     return $model;
   }
@@ -41,7 +41,7 @@ class BookCategoryRepository implements RepositoryInterface
   {
     $model = BookCategory::find($id);
     if (! $model) {
-      throw new \App\Exceptions\ApiException(404, 'Book not found');
+      throw new \App\Exceptions\Error(404, 'Book not found');
     }
     $model->delete();
     return $model;

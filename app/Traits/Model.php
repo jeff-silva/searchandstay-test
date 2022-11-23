@@ -12,7 +12,7 @@ trait Model
       $validate = $model->validate();
 
       if ($validate->fails()) {
-        throw new \App\Exceptions\ApiException(500, 'Validation errors', $validate->errors());
+        throw new \App\Exceptions\Error(500, 'Validation errors', $validate->errors());
       }
     });
   }

@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class ApiException extends Exception
+class Error extends Exception
 {
     public function __construct($status, $message, $fields = [])
     {

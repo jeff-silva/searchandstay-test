@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BookStore;
 use App\Repositories\BookStoreRepository;
+use App\Exceptions\Error;
 
 class BookStoreController extends Controller
 {
@@ -73,7 +74,7 @@ class BookStoreController extends Controller
      */
     public function show($id)
     {
-        return $this->repository->store($id);
+        return $this->repository->show($id);
     }
 
     /**
