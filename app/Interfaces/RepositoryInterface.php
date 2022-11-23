@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 interface RepositoryInterface
 {
+  public function validate(Request $request);
   public function index(Request $request);
   public function store(Request $request);
   public function show($id);

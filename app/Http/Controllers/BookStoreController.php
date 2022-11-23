@@ -55,6 +55,7 @@ class BookStoreController extends Controller
      */
     public function store(Request $request)
     {
+        $this->repository->validate($request);
         return $this->repository->store($request);
     }
 
@@ -94,6 +95,7 @@ class BookStoreController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->repository->validate($request);
         return $this->repository->update($request, $id);
     }
 

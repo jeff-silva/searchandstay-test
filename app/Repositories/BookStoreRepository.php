@@ -9,6 +9,12 @@ use App\Exceptions\Error;
 
 class BookStoreRepository implements RepositoryInterface
 {
+  public function validate(Request $request)
+  {
+    return (new BookStore)->validate($request);
+  }
+
+
   public function index(Request $request)
   {
     return BookStore::query()

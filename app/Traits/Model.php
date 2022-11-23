@@ -29,12 +29,19 @@ trait Model
     return [];
   }
 
-  public function validate()
+  public function validate($data = null)
   {
+    if (null === $data) {
+      $data = new Request($this->toArray());
+    }
+
+    if (is_array($data)) {
+      $data = new Request($data);
+    }
+
     $rules = $this->validationRules();
     $messages = $this->validationMessages();
-    $data = $this->toArray();
-    return \Validator::make($data, $rules, $messages);
+    return $data->validate($rules, $messages);
   }
 
 

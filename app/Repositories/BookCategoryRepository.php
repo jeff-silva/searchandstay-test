@@ -8,6 +8,12 @@ use App\Models\BookCategory;
 
 class BookCategoryRepository implements RepositoryInterface
 {
+  public function validate(Request $request)
+  {
+    return (new BookCategory)->validate($request);
+  }
+
+
   public function index(Request $request)
   {
     return BookCategory::query()
@@ -15,10 +21,12 @@ class BookCategoryRepository implements RepositoryInterface
       ->simplePaginate(request('per_page', 10));
   }
 
+
   public function store(Request $request)
   {
     return BookCategory::create($request->all());
   }
+
 
   public function show($id)
   {
@@ -29,6 +37,7 @@ class BookCategoryRepository implements RepositoryInterface
     return $model;
   }
 
+
   public function update(Request $request, $id)
   {
     $model = BookCategory::firstOrNew(['id' => $id]);
@@ -37,6 +46,7 @@ class BookCategoryRepository implements RepositoryInterface
     return $model;
   }
 
+  
   public function destroy($id)
   {
     $model = BookCategory::find($id);
