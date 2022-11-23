@@ -9,7 +9,7 @@ use App\Exceptions\Error;
 
 class BookStoreRepository implements RepositoryInterface
 {
-  public function search(Request $request)
+  public function index(Request $request)
   {
     return BookStore::query()
       ->search($request->all())

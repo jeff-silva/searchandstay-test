@@ -35,7 +35,7 @@ class BookCategoryController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->repository->search($request);
+        return $this->repository->index($request);
     }
 
     /**

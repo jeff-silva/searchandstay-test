@@ -8,7 +8,7 @@ use App\Models\BookCategory;
 
 class BookCategoryRepository implements RepositoryInterface
 {
-  public function search(Request $request)
+  public function index(Request $request)
   {
     return BookCategory::query()
       ->search($request->all())
