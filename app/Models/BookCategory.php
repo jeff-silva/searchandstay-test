@@ -28,4 +28,9 @@ class BookCategory extends Model
             'name.required' => 'Book name is required',
         ];
     }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucwords(strtolower($value));
+    }
 }

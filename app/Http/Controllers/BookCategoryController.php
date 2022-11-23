@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BookStore;
-use App\Repositories\BookStoreRepository;
+use App\Repositories\BookCategoryRepository;
 
 class BookCategoryController extends Controller
 {
     private $repository;
 
-    public function __construct(BookStoreRepository $repository)
+    public function __construct(BookCategoryRepository $repository)
     {
         $this->middleware('auth:api');
         $this->repository = $repository;
