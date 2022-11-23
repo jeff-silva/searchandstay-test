@@ -50,6 +50,13 @@ class BookStoreController extends Controller
      *      summary="",
      *      operationId="book-store.store",
      *      tags={"book-store"},
+     *      @OA\RequestBody(@OA\JsonContent(
+     *          type="object",
+     *          @OA\Property(property="name", type="string", example=""),
+     *          @OA\Property(property="isbn", type="string", example=""),
+     *          @OA\Property(property="value", type="string", example=""),
+     *          @OA\Property(property="category_ids", type="array", collectionFormat="multi", @OA\Items(type="integer", example="1"))
+     *      )),
      *      @OA\Response(response=200, description="")
      * )
      */
@@ -90,6 +97,14 @@ class BookStoreController extends Controller
      *      summary="",
      *      operationId="book-store.update",
      *      tags={"book-store"},
+     *      @OA\Parameter(in="path", name="book_store", example="1"),
+     *      @OA\RequestBody(@OA\JsonContent(
+     *          type="object",
+     *          @OA\Property(property="name", type="string", example=""),
+     *          @OA\Property(property="isbn", type="string", example=""),
+     *          @OA\Property(property="value", type="string", example=""),
+     *          @OA\Property(property="category_ids", type="array", collectionFormat="multi", @OA\Items(type="integer", example="1"))
+     *      )),
      *      @OA\Response(response=200, description="")
      * )
      */
@@ -110,6 +125,7 @@ class BookStoreController extends Controller
      *      summary="",
      *      operationId="book-store.destroy",
      *      tags={"book-store"},
+     *      @OA\Parameter(in="path", name="book_store", example="1"),
      *      @OA\Response(response=200, description="")
      * )
      */

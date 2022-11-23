@@ -28,8 +28,6 @@ class BookCategoryController extends Controller
      *      @OA\Parameter(in="query", name="page", example="1"),
      *      @OA\Parameter(in="query", name="per_page", example="10"),
      *      @OA\Parameter(in="query", name="term", example=""),
-     *      @OA\Parameter(in="query", name="value_min", example=""),
-     *      @OA\Parameter(in="query", name="value_max", example=""),
      *      @OA\Response(response=200, description="")
      * )
      */
@@ -49,6 +47,10 @@ class BookCategoryController extends Controller
      *      summary="",
      *      operationId="book-category.store",
      *      tags={"book-category"},
+     *      @OA\RequestBody(@OA\JsonContent(
+     *          type="object",
+     *          @OA\Property(property="name", type="string", example="")
+     *      )),
      *      @OA\Response(response=200, description="")
      * )
      */
@@ -65,10 +67,11 @@ class BookCategoryController extends Controller
      * @return \Illuminate\Http\Response
      * 
      * @OA\Get(
-     *      path="/api/book-category/{book_store}",
+     *      path="/api/book-category/{book_category}",
      *      summary="",
      *      operationId="book-category.show",
      *      tags={"book-category"},
+     *      @OA\Parameter(in="path", name="book_category", example="1"),
      *      @OA\Response(response=200, description="")
      * )
      */
@@ -85,10 +88,15 @@ class BookCategoryController extends Controller
      * @return \Illuminate\Http\Response
      * 
      * @OA\Put(
-     *      path="/api/book-category/{book_store}",
+     *      path="/api/book-category/{book_category}",
      *      summary="",
      *      operationId="book-category.update",
      *      tags={"book-category"},
+     *      @OA\Parameter(in="path", name="book_category", example="1"),
+     *      @OA\RequestBody(@OA\JsonContent(
+     *          type="object",
+     *          @OA\Property(property="name", type="string", example="")
+     *      )),
      *      @OA\Response(response=200, description="")
      * )
      */
@@ -105,10 +113,11 @@ class BookCategoryController extends Controller
      * @return \Illuminate\Http\Response
      * 
      * @OA\Delete(
-     *      path="/api/book-category/{book_store}",
+     *      path="/api/book-category/{book_category}",
      *      summary="",
      *      operationId="book-category.destroy",
      *      tags={"book-category"},
+     *      @OA\Parameter(in="path", name="book_category", example="1"),
      *      @OA\Response(response=200, description="")
      * )
      */

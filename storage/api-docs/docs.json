@@ -110,16 +110,6 @@
                         "name": "term",
                         "in": "query",
                         "example": ""
-                    },
-                    {
-                        "name": "value_min",
-                        "in": "query",
-                        "example": ""
-                    },
-                    {
-                        "name": "value_max",
-                        "in": "query",
-                        "example": ""
                     }
                 ],
                 "responses": {
@@ -135,6 +125,21 @@
                 "summary": "",
                 "description": "Store a newly created resource in storage.",
                 "operationId": "book-category.store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": ""
@@ -142,7 +147,7 @@
                 }
             }
         },
-        "/api/book-category/{book_store}": {
+        "/api/book-category/{book_category}": {
             "get": {
                 "tags": [
                     "book-category"
@@ -150,6 +155,13 @@
                 "summary": "",
                 "description": "Display the specified resource.",
                 "operationId": "book-category.show",
+                "parameters": [
+                    {
+                        "name": "book_category",
+                        "in": "path",
+                        "example": "1"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -163,6 +175,28 @@
                 "summary": "",
                 "description": "Update the specified resource in storage.",
                 "operationId": "book-category.update",
+                "parameters": [
+                    {
+                        "name": "book_category",
+                        "in": "path",
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": ""
@@ -176,6 +210,13 @@
                 "summary": "",
                 "description": "Remove the specified resource from storage.",
                 "operationId": "book-category.destroy",
+                "parameters": [
+                    {
+                        "name": "book_category",
+                        "in": "path",
+                        "example": "1"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -231,6 +272,37 @@
                 "summary": "",
                 "description": "Store a newly created resource in storage.",
                 "operationId": "book-store.store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "isbn": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "value": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "category_ids": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "collectionFormat": "multi"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": ""
@@ -259,6 +331,44 @@
                 "summary": "",
                 "description": "Update the specified resource in storage.",
                 "operationId": "book-store.update",
+                "parameters": [
+                    {
+                        "name": "book_store",
+                        "in": "path",
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "isbn": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "value": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "category_ids": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "collectionFormat": "multi"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": ""
@@ -272,6 +382,13 @@
                 "summary": "",
                 "description": "Remove the specified resource from storage.",
                 "operationId": "book-store.destroy",
+                "parameters": [
+                    {
+                        "name": "book_store",
+                        "in": "path",
+                        "example": "1"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
