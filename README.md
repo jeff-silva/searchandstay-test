@@ -15,7 +15,5 @@ php artisan app:install
 php artisan serve
 ```
 
-Import the file `database/dump.sql` to your database.
-
 ## API Documentation
 http://localhost/swagger
