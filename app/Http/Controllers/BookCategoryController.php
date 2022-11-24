@@ -25,6 +25,7 @@ class BookCategoryController extends Controller
      *      summary="",
      *      operationId="book-category.index",
      *      tags={"book-category"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\Parameter(in="query", name="page", example="1"),
      *      @OA\Parameter(in="query", name="per_page", example="10"),
      *      @OA\Parameter(in="query", name="term", example=""),
@@ -47,6 +48,7 @@ class BookCategoryController extends Controller
      *      summary="",
      *      operationId="book-category.store",
      *      tags={"book-category"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\RequestBody(@OA\JsonContent(
      *          type="object",
      *          @OA\Property(property="name", type="string", example="")
@@ -71,13 +73,14 @@ class BookCategoryController extends Controller
      *      summary="",
      *      operationId="book-category.show",
      *      tags={"book-category"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\Parameter(in="path", name="book_category", example="1"),
      *      @OA\Response(response=200, description="")
      * )
      */
     public function show($id)
     {
-        return $this->repository->store($id);
+        return $this->repository->show($id);
     }
 
     /**
@@ -92,6 +95,7 @@ class BookCategoryController extends Controller
      *      summary="",
      *      operationId="book-category.update",
      *      tags={"book-category"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\Parameter(in="path", name="book_category", example="1"),
      *      @OA\RequestBody(@OA\JsonContent(
      *          type="object",
@@ -117,6 +121,7 @@ class BookCategoryController extends Controller
      *      summary="",
      *      operationId="book-category.destroy",
      *      tags={"book-category"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\Parameter(in="path", name="book_category", example="1"),
      *      @OA\Response(response=200, description="")
      * )

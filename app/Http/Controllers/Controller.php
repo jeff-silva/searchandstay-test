@@ -12,6 +12,15 @@ use Illuminate\Http\Request;
 /**
  * @OA\Info(title="Search and Stay Test", version="0.1")
  * @OA\PathItem(path="/api")
+ * @OA\SecurityScheme(
+ *     type="http",
+ *     description="Login with email and password to get the authentication token",
+ *     name="Token based Based",
+ *     in="header",
+ *     scheme="bearer",
+ *     bearerFormat="JWT",
+ *     securityScheme="bearer_token",
+ * )
  */
 
 class Controller extends BaseController

@@ -65,6 +65,7 @@ class AuthController extends Controller
      *      summary="",
      *      operationId="auth.me",
      *      tags={"auth"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\Response(response=200, description="")
      * )
      */
@@ -83,6 +84,7 @@ class AuthController extends Controller
      *      summary="",
      *      operationId="auth.logout",
      *      tags={"auth"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\Response(response=200, description="")
      * )
      */
@@ -103,6 +105,7 @@ class AuthController extends Controller
      *      summary="",
      *      operationId="auth.refresh",
      *      tags={"auth"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\Response(response=200, description="")
      * )
      */

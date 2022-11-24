@@ -14,7 +14,7 @@ class BookCategory extends Model
     protected $fillable = ['id', 'name'];
 
 
-    public function validationRules()
+    public function validationRules($request)
     {
         return [
             'name' => ['required'],
@@ -22,15 +22,24 @@ class BookCategory extends Model
     }
 
 
-    public function validationMessages()
+    public function validationMessages($request)
     {
         return [
-            'name.required' => 'Book name is required',
+            'name.required' => 'Book category is required',
         ];
     }
 
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = ucwords(strtolower($value));
+    }
+
+    public function onSearch($query, $params)
+    {
+        if ($params->term) {
+            $query->where('name', 'like', "%{$params->term}%");
+        }
+
+        return $query;
     }
 }

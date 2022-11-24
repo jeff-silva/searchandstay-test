@@ -3,17 +3,14 @@
 namespace App\Traits;
 
 use Illuminate\Http\Request;
+use App\Exceptions\Error;
 
 trait Model
 {
   public static function bootModel()
   {
     static::saving(function($model) {
-      $validate = $model->validate();
-
-      if ($validate->fails()) {
-        throw new \App\Exceptions\Error(500, 'Validation errors', $validate->errors());
-      }
+      $model->validate();
     });
   }
 
@@ -29,19 +26,32 @@ trait Model
     return [];
   }
 
-  public function validate($data = null)
+  public function validate($request = null)
   {
-    if (null === $data) {
-      $data = new Request($this->toArray());
+
+    /**
+     * If data is null, validate with loaded data inside model:
+     * Model::find(1)->validate()
+     */
+    if (null === $request) {
+      $request = new Request($this->toArray());
     }
 
-    if (is_array($data)) {
-      $data = new Request($data);
+    /**
+     * You can validate using pure array data
+     * $model->validate(['name' => ''])
+     */
+    if (is_array($request)) {
+      $request = new Request($request);
     }
 
-    $rules = $this->validationRules();
-    $messages = $this->validationMessages();
-    return $data->validate($rules, $messages);
+    $rules = $this->validationRules($request);
+    $messages = $this->validationMessages($request);
+    $validator = \Validator::make($request->all(), $rules, $messages);
+
+    if ($validator->fails()) {
+      throw new Error(400, 'Validation errors', $validator->errors());
+    }
   }
 
 

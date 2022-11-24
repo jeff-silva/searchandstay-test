@@ -26,6 +26,7 @@ class BookStoreController extends Controller
      *      summary="",
      *      operationId="book-store.index",
      *      tags={"book-store"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\Parameter(in="query", name="page", example="1"),
      *      @OA\Parameter(in="query", name="per_page", example="10"),
      *      @OA\Parameter(in="query", name="term", example=""),
@@ -50,6 +51,7 @@ class BookStoreController extends Controller
      *      summary="",
      *      operationId="book-store.store",
      *      tags={"book-store"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\RequestBody(@OA\JsonContent(
      *          type="object",
      *          @OA\Property(property="name", type="string", example=""),
@@ -77,6 +79,8 @@ class BookStoreController extends Controller
      *      summary="",
      *      operationId="book-store.show",
      *      tags={"book-store"},
+     *      security={{ "bearer_token": {} }},
+     *      @OA\Parameter(in="path", name="book_store", example="1"),
      *      @OA\Response(response=200, description="")
      * )
      */
@@ -97,6 +101,7 @@ class BookStoreController extends Controller
      *      summary="",
      *      operationId="book-store.update",
      *      tags={"book-store"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\Parameter(in="path", name="book_store", example="1"),
      *      @OA\RequestBody(@OA\JsonContent(
      *          type="object",
@@ -110,7 +115,7 @@ class BookStoreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->repository->validate($request);
+        $this->repository->validate($request->merge(['id' => $id]));
         return $this->repository->update($request, $id);
     }
 
@@ -125,6 +130,7 @@ class BookStoreController extends Controller
      *      summary="",
      *      operationId="book-store.destroy",
      *      tags={"book-store"},
+     *      security={{ "bearer_token": {} }},
      *      @OA\Parameter(in="path", name="book_store", example="1"),
      *      @OA\Response(response=200, description="")
      * )

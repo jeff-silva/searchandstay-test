@@ -54,7 +54,12 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/api/auth/logout": {
@@ -69,7 +74,12 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/api/auth/refresh": {
@@ -84,7 +94,12 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/api/book-category": {
@@ -116,7 +131,12 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -144,7 +164,12 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/api/book-category/{book_category}": {
@@ -166,7 +191,12 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -201,7 +231,12 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -221,7 +256,12 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/api/book-store": {
@@ -263,7 +303,12 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -307,7 +352,12 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/api/book-store/{book_store}": {
@@ -318,11 +368,23 @@
                 "summary": "",
                 "description": "Display the specified resource.",
                 "operationId": "book-store.show",
+                "parameters": [
+                    {
+                        "name": "book_store",
+                        "in": "path",
+                        "example": "1"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -373,7 +435,12 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -393,7 +460,24 @@
                     "200": {
                         "description": ""
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer_token": {
+                "type": "http",
+                "description": "Login with email and password to get the authentication token",
+                "name": "Token based Based",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
             }
         }
     }
